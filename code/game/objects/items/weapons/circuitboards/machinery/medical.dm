@@ -70,3 +70,7 @@
 		/obj/item/stock_parts/keyboard = 1,
 		/obj/item/stock_parts/power/apc/buildable = 1
 	)
+
+/obj/item/stock_parts/circuitboard/ventilator
+	name = "circuit board (ventilator)"
+	build_path = /obj/machinery/ventilator

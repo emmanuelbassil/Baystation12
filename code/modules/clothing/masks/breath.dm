@@ -9,6 +9,7 @@
 	gas_transfer_coefficient = 0.10
 	permeability_coefficient = 0.50
 	down_gas_transfer_coefficient = 1
+	var/obj/machinery/ventilator/connected_vent = null
 	down_body_parts_covered = null
 	down_item_flags = ITEM_FLAG_THICKMATERIAL
 	down_icon_state = "breathdown"
@@ -25,6 +26,13 @@
 	item_state = "medical"
 	permeability_coefficient = 0.01
 
+/obj/item/clothing/mask/breath/tube
+	desc = "A plastic tube used to deliver breaths directly into the lungs."
+	name = "endotracheal tube"
+	icon_state = "medical"
+	item_state = "medical"
+	permeability_coefficient = 0.01
+
 /obj/item/clothing/mask/breath/anesthetic
 	desc = "A close-fitting sterile mask that is used by the anesthetic wallmounted pump."
 	name = "anesthetic mask"
@@ -33,7 +41,7 @@
 	permeability_coefficient = 0.01
 
 /obj/item/clothing/mask/breath/emergency
-	desc = "A close-fitting  mask that is used by the wallmounted emergency oxygen pump."
+	desc = "A close-fitting mask that is used by the wallmounted emergency oxygen pump."
 	name = "emergency mask"
 	icon_state = "breath"
 	item_state = "breath"

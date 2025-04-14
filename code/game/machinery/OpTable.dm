@@ -20,6 +20,7 @@
 	var/strapped = 0.0
 	var/obj/machinery/computer/operating/computer = null
 	var/obj/machinery/vitals_monitor/connected_monitor = null
+	var/obj/machinery/ventilator/connected_vent = null
 
 /obj/machinery/optable/Initialize()
 	. = ..()

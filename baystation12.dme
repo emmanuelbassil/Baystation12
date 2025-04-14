@@ -778,6 +778,7 @@
 #include "code\game\machinery\supplybeacon.dm"
 #include "code\game\machinery\syndicatebeacon.dm"
 #include "code\game\machinery\turret_control.dm"
+#include "code\game\machinery\Ventilator.dm"
 #include "code\game\machinery\vitals_monitor.dm"
 #include "code\game\machinery\wall_frames.dm"
 #include "code\game\machinery\washing_machine.dm"
