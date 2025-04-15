@@ -27,11 +27,14 @@
 	. = ..()
 
 /obj/machinery/ventilator/Destroy()
+	. = ..()
 	if (connected_optable)
 		connected_optable.connected_vent = null
+		connected_optable = null
 	if (connected_tube)
 		connected_tube.connected_vent = null
-	. = ..()
+		connected_tube = null
+	connected_victim = null
 
 /obj/machinery/ventilator/examine(mob/user)
 	. = ..()
@@ -66,10 +69,19 @@
 /obj/machinery/ventilator/Move()
 	. = ..()
 	if (connected_optable && get_dist(src, connected_optable) > 1)
-		visible_message(SPAN_WARNING("\The [src] is violently pulled away from \the [connected_optable], damaging the tubing."))
+		visible_message(SPAN_NOTICE("\The [src] is pulled away from \the [connected_optable]."))
 		connected_optable.connected_vent = null
 		connected_optable = null
-		damage_health(health_max * 0.1)
+	if (connected_victim && get_dist(src, connected_victim) > 1)
+		if (istype(connected_tube, /obj/item/clothing/mask/breath/tube))
+			visible_message(SPAN_WARNING("\The [src] is violently pulled away from \the [connected_victim], pulling \the [connected_tube] out of their mouth."))
+			connected_victim.custom_pain("\The [connected_tube] is violently pulled out of your own throat!", 90, TRUE)
+			connected_victim.apply_damage(rand(15, 30), DAMAGE_BRUTE, BP_HEAD, armor_pen = 100)
+		else
+			visible_message(SPAN_NOTICE("\The [connected_tube] is pulled off of \the [connected_victim]."))
+		connected_victim = null
+		connected_tube.connected_vent = null
+		connected_tube = null
 
 /obj/machinery/ventilator/proc/update_optable(obj/machinery/optable/new_table, user)
 	if (!istype(new_table))
@@ -84,11 +96,14 @@
 		visible_message(SPAN_NOTICE("\The [src] is disconnected from \the [connected_optable]."))
 		connected_optable.connected_vent = null
 		connected_optable = null
+		anchored = FALSE
 		return
 	if (!connected_optable)
 		connected_optable = new_table
 		connected_optable.connected_vent = src
+		anchored = TRUE
 		visible_message(SPAN_NOTICE("\The [src] is connected to \the [connected_optable]."))
+		return
 
 /obj/machinery/ventilator/proc/update_victim(mob/living/carbon/human/victim, user)
 	if (!istype(victim))
@@ -117,6 +132,8 @@
 
 /*Immediate to-do list:
 Breathing code; obviously.
+add code to drop tube when pulled out violently.
+Maybe switch move() to process()?
 Add codex entry
 Add wires
 Way to repair it
