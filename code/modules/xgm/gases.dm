@@ -253,3 +253,12 @@
 	breathed_product = /datum/reagent/toxin/boron
 	symbol_html = "B"
 	symbol = "B"
+
+/singleton/xgm_gas/isopropyl_alcohol
+	id = GAS_ISOPROPYL
+	name = "Isopropyl Alcohol"
+	specific_heat = 83 //J/(mol*K)
+	molar_mass = 0.06 //kg/mol
+	breathed_product = /datum/reagent/isopropyl_alcohol
+	symbol_html = "C<sub>3</sub>H<sub>8</sub>O"
+	symbol = "C3H8O"

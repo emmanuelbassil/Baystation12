@@ -98,6 +98,16 @@
 	color = "#6e3b08"
 	value = DISPENSER_REAGENT_VALUE
 
+///Toxic alcohol that is only useful to treat nausea when inhaled.
+/datum/reagent/isopropyl_alcohol
+	name = "Isopropyl Alcohol"
+	description = "Coloquially known as rubbing alcohol, not safe for ingestion."
+	taste_description = "bitter alcohol"
+	reagent_state = LIQUID
+	color = "#fffefe9f"
+	alpha = 180
+
+
 /datum/reagent/ethanol
 	name = "Ethanol" //Parent class for all alcoholic reagents.
 	description = "A well-known alcohol with a variety of applications."

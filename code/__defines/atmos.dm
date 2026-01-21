@@ -128,5 +128,6 @@
 #define GAS_STEAM				"water"
 #define GAS_PHORON				"phoron"
 #define GAS_BORON				"boron"
+#define GAS_ISOPROPYL			"isopropyl_alcohol"
 #define GAS_HEAT                "heat" //Not a real gas, used for visual effects
 #define GAS_COLD                "cold" //Not a real gas, used for visual effects
